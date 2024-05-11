@@ -1,0 +1,196 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:rgb(111, 231, 175);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(28, 20px);
+    grid-gap: 1px;
+    background-color: rgb(38, 165, 55);
+}
+
+.grid div {
+    width: 20px;
+    height: 20px;
+}
+
+.wall {
+    background-color: #FF416C;
+}
+
+.pac-dot {
+    background-color: #fff; 
+    border-radius: 50%;
+}
+
+.power-pellet {
+    background-color: #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: pulse 0.8s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+.ghost-lair {
+    background-color: aqua;
+}
+
+.pac-man {
+    background-color: #ff0;
+    border-radius: 50%;
+}
+
+.ghost {
+    background-color: #f00;
+    border-radius: 50%;
+}
+
+.scared-ghost {
+    background-color: aqua;
+    box-shadow: 0 0 20px 20px #00f;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 20px 20px #00f;
+    }
+    100% {
+        box-shadow: 0 0 40px 40px #00f;
+    }
+}
+
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+#score_value {
+    color:#f00;
+    font-size: 47px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00ff11, 0 0 20px #00ff7b, 0 0 30px #09ff00, 0 0 40px #ffbb00;
+}
+
+
+.alert {
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+.blinky{
+     background-color: red;
+    }
+.clyde{
+     background-color: orange;
+    }
+.inky{
+     background-color:brown;
+    }
+.pinky{
+     background-color: pink;}
+     .pac-man {
+        background-color: #ff0;
+        border-radius: 50%;
+        position: relative;
+    }
+    
+    .pac-man::before,
+    .pac-man::after {
+        content: '';
+        position: absolute;
+        background-color: #000;
+        border-radius: 50%;
+    }
+    
+    /* Left eye */
+    .pac-man::before {
+        top: 25%;
+        left: 25%;
+        width: 25%;
+        height: 25%;
+    }
+    
+    /* Right eye */
+    .pac-man::after {
+        top: 25%;
+        right: 25%;
+        width: 25%;
+        height: 25%;
+    }
+    
+    /* Mouth */
+    .pac-man::before {
+        clip-path: polygon(50% 50%, 100% 0, 100% 100%);
+        transform: rotate(0deg);
+    }
+    
+    /* Adjust mouth opening by changing the degree of rotation */
+    .pac-man::before {
+        clip-path: polygon(50% 50%, 100% 0, 100% 100%);
+        transform: rotate(45deg); /* Adjust the degree of rotation to change mouth opening */
+        clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+
+    }
+    
+
+    .blinky, .clyde, .inky, .pinky {
+        position: relative;
+    }
+    
+    .blinky::before, .clyde::before, .inky::before, .pinky::before,
+    .blinky::after, .clyde::after, .inky::after, .pinky::after {
+        content: "";
+        position: absolute;
+        top: 25%;
+        width: 25%;
+        height: 25%;
+        background-color: #000;
+        border-radius: 50%;
+    }
+    
+    .blinky::before, .clyde::before, .inky::before, .pinky::before {
+        left: 15%;
+    }
+    
+    .blinky::after, .clyde::after, .inky::after, .pinky::after {
+        right: 15%;
+    }
+    .blinky, .pinky, .inky, .clyde {
+        box-shadow: 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fff, 0 0 35px #fff;
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes glow {
+        0% {
+            box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #fff, 0 0 25px #fff;
+        }
+        100% {
+            box-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #fff, 0 0 60px #fff;
+        }
+    }
+    
+
+    
+    

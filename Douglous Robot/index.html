@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet Douglas, the interactive JavaScript robot who loves coding!">
+    <title>Douglas the JavaScript Robot</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Fallback if CSS fails to load -->
+    <noscript><link rel="stylesheet" href="fallback-styles.css"></noscript>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Douglas's World</h1>
+    </header>
+    <main>
+        <section id="robot" aria-label="Douglas the Robot">
+            <div id="head" role="img" aria-label="Robot head with eyes, nose, and mouth">
+                <div class="eye" id="righteye" aria-hidden="true"></div>
+                <div class="eye" id="lefteye" aria-hidden="true"></div>
+                <div id="nose" aria-hidden="true"></div>
+                <div id="mouth" aria-hidden="true"></div>
+            </div>
+            <div class="arm" id="rightarm" aria-hidden="true"></div>
+            <div id="body">
+                <p>I 3 JS!</p>
+            </div>
+            <audio id="redSound" src="robot_voice.mp3"></audio>
+            <audio id="codesound" src="vinyl.mp3"></audio>
+            <div class="arm" id="leftarm" aria-hidden="true"></div>
+        </section>
+    </main>
+    <footer>
+        <p>© <span id="year">2024</span> Kwanele Douglas Robot</p>
+    </footer>
+    <script src="script.js"></script>
+    <!-- Fallback if JS fails to load -->
+    <noscript>Your browser does not support JavaScript or it is disabled.</noscript>
+</body>
+</html>

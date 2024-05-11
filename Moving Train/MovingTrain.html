@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #524e0612; /* Light Blue background */
+        }
+        body.on {
+            background: radial-gradient(#555, #111);
+        }
+
+        #container {
+            padding: 5px;
+            width: 100%; /* Increased width for the game */
+            height: 350px; /* Increased height for the game */
+            background-color: #222;
+            margin: 0 auto; /* Center the game */
+        }
+        body.on #bulb {
+            background:  rgb(299,255,0);
+            box-shadow: 0 0 50px rgb(299,255,0),
+                                 0 0 100px rgb(299,255,0),
+                                 0 0 150px rgb(299,255,0),
+                                 0 0 30px rgb(299,255,0);
+        }
+
+        #track {
+            width: 100%;
+            height: 160px; /* Adjust the height as needed */
+            border-top: 8px solid rgb(53, 43, 43);
+            margin: 20px auto 50px; /* Adjust the margin-bottom value */
+            border-bottom: 8px solid rgb(61, 51, 51);
+        }
+        
+        
+        body.on #bulb::before {
+            background: rgb(229,255,0);
+        }
+
+        body.on #bulb::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            border-radius: 50%;
+            filter: blur(50px);
+        }
+        #train {
+            height: 500px; /* Changed height for the train */
+            width: 500px;
+            position: absolute;
+            top: 100px;
+            left: 0;
+        }
+
+        #buttons {
+            margin-top: 350px;
+            text-align: center;
+
+        }
+
+        button {
+            margin: 0 10px;
+            position: relative;
+            align-content: baseline;
+            width: 130px;
+            height: 40px;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 25px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
+              7px 7px 20px 0px rgba(0,0,0,.1),
+              4px 4px 5px 0px rgba(0,0,0,.1);
+            outline: none;
+        }
+        button {
+            background: rgb(96,9,240);
+            background: linear-gradient(0deg, rgba(96,9,240,1) 0%, rgba(129,5,240,1) 100%);
+            border: none;
+           }
+           
+           button::before {
+            height: 0%;
+            width: 2px;
+           }
+           
+           button:hover {
+            box-shadow: 4px 4px 6px 0 rgba(255,255,255,.5),
+                         -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+               inset -4px -4px 6px 0 rgba(255,255,255,.2),
+               inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+           }
+           
+        #bulb {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            right: 5%;
+            background: #444;
+            border-radius: 50%;
+            z-index:  2;
+            top: 110px;
+        }
+
+        #bulb::before {
+            content : "";
+            position: absolute;
+            top: -50px;
+            left: 22.5px;
+            width: 35px;
+            height: 80px;
+            background: #444;
+            border-radius: 20px;
+            border-top:10px solid black;
+
+        }
+        #bulb span:nth-child(2) {
+            position: absolute;
+            top: -16px;
+            right: -4px;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background:transparent ;
+            transform: rotate(343deg);
+            border-bottom-right-radius:40px ;
+            box-shadow: 20px 20px 0 10px #444;
+        }
+        #wire {
+            position: absolute;
+            left: calc(50% -2px);
+            bottom:  50%;
+            width: 8px;
+            height: 10vh;
+            background: black;
+            z-index: 1;
+            right: 6.8%;
+            top: 10px;
+        }
+        /* The switch - the box around the slider */
+.switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 2.5em;
+    user-select: none;
+  }
+  p {
+    font-size: 18px;
+    line-height: 24px;
+   font-family: 'Times New Roman', Times, serif;
+    font-style: oblique;
+    color: seagreen;
+  }
+  /* Hide default HTML checkbox */
+  .switch .cb {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .toggle {
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background-color: #373737;
+    border-radius: 0.1em;
+    transition: 0.4s;
+    text-transform: uppercase;
+    font-weight: 700;
+    overflow: hidden;
+    box-shadow: -0.3em 0 0 0 #373737, -0.3em 0.3em 0 0 #373737,
+      0.3em 0 0 0 #373737, 0.3em 0.3em 0 0 #373737, 0 0.3em 0 0 #373737;
+  }
+  
+  .toggle > .left {
+    position: absolute;
+    display: flex;
+    width: 50%;
+    height: 88%;
+    background-color: #f3f3f3;
+    color: #373737;
+    left: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    transform-origin: right;
+    transform: rotateX(10deg);
+    transform-style: preserve-3d;
+    transition: all 150ms;
+  }
+  
+  .left::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(206, 206, 206);
+    transform-origin: center left;
+    transform: rotateY(90deg);
+  }
+  
+  .left::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(112, 112, 112);
+    transform-origin: center bottom;
+    transform: rotateX(90deg);
+  }
+  
+  .toggle > .right {
+    position: absolute;
+    display: flex;
+    width: 50%;
+    height: 88%;
+    background-color: #f3f3f3;
+    color: rgb(206, 206, 206);
+    right: 1px;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    transform-origin: left;
+    transform: rotateX(10deg) rotateY(-45deg);
+    transform-style: preserve-3d;
+    transition: all 150ms;
+  }
+  h1 {
+    font-family: 'Times New Roman', Times, serif;
+    color: cadetblue;
+  }
+  h2 {
+    font-family: 'Times New Roman', Times, serif;
+    color: cornflowerblue;
+    display: flexbox;
+  }
+  
+  .right::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(206, 206, 206);
+    transform-origin: center right;
+    transform: rotateY(-90deg);
+  }
+  
+  .right::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(112, 112, 112);
+    transform-origin: center bottom;
+    transform: rotateX(90deg);
+  }
+  
+  .switch input:checked + .toggle > .left {
+    transform: rotateX(10deg) rotateY(45deg);
+    color: rgb(206, 206, 206);
+  }
+  
+  .switch input:checked + .toggle > .right {
+    transform: rotateX(10deg) rotateY(0deg);
+    color: #487bdb;
+  }
+  
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="track">&nbsp;</div>
+        <div id="train">
+            <img src="http://www.watzthis.com/images/train.png" alt="Train Image">
+        </div>
+        <div id="light">
+            <div id="wire"></div>
+            <div id="bulb">
+                <span>
+                    <span>
+
+                    </span>
+                </span>
+            </div>
+            <label class="switch">
+                <input class="cb" type="checkbox" />
+                <span class="toggle">
+                  <span class="left">off</span>
+                  <span class="right">on</span>
+                </span>
+              </label>
+        </div>
+        <!-- Buttons -->
+        <div id="buttons">
+            <button id="stopButton">Stop</button>
+            <button id="dropButton">Drop</button>
+            <button id="speedUpButton">Speed Up</button>
+            <button id="slowDownButton">Slow Down</button>
+            <button id="resumeButton">Play</button>
+            <button id="pauseButton">Pause</button>
+        </div>
+    </div>
+
+    <audio id="peopleSound" src="train-horn-fades-25194.mp3" preload="auto"></audio>
+    <h1>Function Junction</h1>
+     <h2>Title: “My JavaScript Journey: Navigating Functions”</h2>
+
+    <p>At Coding College, they handed us a challenge: create and understand JavaScript functions. It felt like a roller coaster ride. Up we went, fueled by curiosity and creativity. But then came the twists—doubt, uncertainty.
+        
+        I wondered, “What can I add?” Late nights blurred into mornings. Each line of code became my canvas. Could I infuse my personality?
+        
+        Functions, I realized, are like magic spells. With every parameter, I wove incantations. The code came alive. And as the deadline loomed, I hit “Submit.” The coaster plunged into the unknown.
+        
+        Coding, my friend, is this wild ride. So here’s to you, fellow coder. May your functions be elegant, your journey unforgettable. 🚀🎢</p>
+    <!-- Include your JavaScript code here -->
+    <script src="MvingTrain.js"></script>
+</body>
+</html>

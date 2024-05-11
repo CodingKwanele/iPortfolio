@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: right;
+    padding: 10px;
+}
+
+th {
+    background-color: #f8f8f8;
+    color: red;
+}
+
+button {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background: rgb(145, 92, 182);
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-weight: normal;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    table, th, td {
+        width: auto;
+        padding: 5px;
+    }
+
+    button {
+        padding: 10px 20px;
+    }
+}
+
+.checkout-card {
+    width: 60%; /* Default width for larger screens */
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+    .checkout-card {
+        width: 90%; /* Adjusted width for mobile screens */
+
+    }
+}
+
+
+.checkout-card h2 {
+    color: #333;
+}
+
+.checkout-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.checkout-card li {
+    margin-bottom: 10px;
+}
+
+.checkout-card p {
+    font-weight: bold;
+}

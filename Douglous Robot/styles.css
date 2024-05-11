@@ -1,0 +1,126 @@
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+p {
+    font-size: 3em;
+}
+
+.eye {
+    background-color: var(--eye-color);
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    position: absolute;
+    animation: bounce 0.5s ease;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+.eye.red-glow {
+    box-shadow: 0 0 8px 8px red;
+}
+
+.eye.white-glow {
+    box-shadow: 0 0 8px 8px white;
+}
+
+.arm {
+    background-color: var(--arm-color);
+    position: absolute;
+    top: 35%;
+    width: 5%;
+    height: 40%;
+}
+
+#head {
+    width: 30%;
+    height: 30%;
+    border-radius: 15%;
+    background-color: var(--body-color);
+    position: absolute;
+    left: 32%;
+    top: 5%;
+}
+
+#righteye {
+    position: absolute;
+    left: 20%;
+    top: 20%;
+}
+
+#lefteye {
+    position: absolute;
+    left: 60%;
+    top: 20%;
+}
+
+#nose {
+    position: absolute;
+    left: 45%;
+    top: 50%;
+    width: 10%;
+    height: 10%;
+    background-color: var(--nose-color);
+}
+
+#mouth {
+    position: absolute;
+    width: 65%;
+    height: 15%;
+    left: 20%;
+    top: 70%;
+    background-color: var(--mouth-color);
+}
+
+#body {
+    position: absolute;
+    left: 25%;
+    top: 35%;
+    width: 45%;
+    height: 55%;
+    background-color: var(--body-color);
+    text-align: center;
+    padding-top: 30px;
+}
+
+#rightarm {
+    position: absolute;
+    left: 20%;
+}
+
+#leftarm {
+    position: absolute;
+    left: 70%;
+    width: 30%;
+    height: 7%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.bounce {
+    animation-play-state: running;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+:root {
+    --body-color: #dadada;
+    --arm-color: #cacaca;
+    --eye-color: blue;
+    --nose-color: black;
+    --mouth-color: red;
+}

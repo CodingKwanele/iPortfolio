@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get yourself a pizza</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS styles will be added here */
+    </style>
+</head>
+<body>
+    <h1>Kwanele Dladla Pizzas</h1>
+    <div id="orderForm">
+        <label>How many pizzas do you want?
+            <input type="number" id="numPizzas">
+        </label>
+        <br><br>
+        <label>What kind of pizzas?
+            <select id="typePizza">
+                <option value="cheese">Cheese</option>
+                <option value="pepperoni">Pepperoni</option>
+                <option value="supreme">Supreme</option>
+            </select>
+        </label>
+        <br><br>
+        <label>Where do you live?
+            <select id="deliveryCity">
+                <option value="Anytown">Anytown</option>
+                <option value="Sacramento">Sacramento</option>
+                <option value="Your Town">Your Town</option>
+            </select>
+        </label>
+        <br><br>
+        <label>Is it your birthday?
+            <select id="birthday">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </label>
+        <br><br>
+        <button class="btn cube cube-hover" type="button">
+            <div class="bg-top">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+              <div class="bg-inner"></div>
+            </div>
+            <div class="text">Place Order</div>
+          </button>
+    </div>
+    <div id="displayTotal"></div>
+    <script src="javaScript.js"></script>
+</body>
+</html>
