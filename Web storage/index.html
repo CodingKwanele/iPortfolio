@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <section id="login-section">
+            <h1>Login</h1>
+            <input type="text" id="username" placeholder="Enter username" aria-label="Username">
+            <button onclick="login()">Login</button>
+        </section>
+        <section id="app-section" style="display: none;">
+            <nav class="sidebar">
+                <h2>Menu</h2>
+                <ul>
+                    <li><button onclick="showSection('local-todo')">Local Storage To-Do</button></li>
+                    <li><button onclick="showSection('session-todo')">Session To-Do List</button></li>
+                    <li><button onclick="showSection('completed-tasks')">See Completed Tasks</button></li>
+                    <li><button onclick="showSection('uncompleted-tasks')">See Uncompleted Tasks</button></li>
+                </ul>
+            </nav>
+            <main class="content">
+                <section id="local-todo" class="todo-section" style="display: none;">
+                    <h2>Local To-Do List</h2>
+                    <div class="task-input">
+                        <input type="text" id="local-todo-input" placeholder="Add a new task" aria-label="New Task">
+                        <select id="local-category" aria-label="Category">
+                            <option value="Work">Work</option>
+                            <option value="Personal Life">Personal Life</option>
+                            <option value="Entertainment">Entertainment</option>
+                        </select>
+                        <input type="date" id="local-due-date" aria-label="Due Date">
+                        <input type="text" id="local-description" placeholder="Add a description" aria-label="Description">
+                        <button onclick="addLocalTodo()">Add Task</button>
+                    </div>
+                    <ul id="local-todo-list"></ul>
+                </section>
+                <section id="session-todo" class="todo-section" style="display: none;">
+                    <h2>Session To-Do List</h2>
+                    <div class="task-input">
+                        <input type="text" id="session-todo-input" placeholder="Add a new task" aria-label="New Task">
+                        <select id="session-category" aria-label="Category">
+                            <option value="Work">Work</option>
+                            <option value="Personal Life">Personal Life</option>
+                            <option value="Entertainment">Entertainment</option>
+                        </select>
+                        <input type="date" id="session-due-date" aria-label="Due Date">
+                        <input type="text" id="session-description" placeholder="Add a description" aria-label="Description">
+                        <button onclick="addSessionTodo()">Add Task</button>
+                    </div>
+                    <ul id="session-todo-list"></ul>
+                </section>
+                <section id="completed-tasks" class="todo-section" style="display: none;">
+                    <h2>Completed Tasks</h2>
+                    <ul id="completed-tasks-list"></ul>
+                </section>
+                <section id="uncompleted-tasks" class="todo-section" style="display: none;">
+                    <h2>Uncompleted Tasks</h2>
+                    <ul id="uncompleted-tasks-list"></ul>
+                </section>
+            </main>
+        </section>
+    </div>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 5,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
